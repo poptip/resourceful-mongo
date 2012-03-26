@@ -76,11 +76,23 @@ describe("Creating", function() {
 
 describe("Saving", function() {
 
-  it("saves without error", function(done) {
+  it("correctly saves changes to a document", function(done) {
     
     db.Person.create({ name: 'Bob', age: 99 }, function (err, person) {
       if (err) done(err);
-      done();
+
+      person.age++;
+
+      person.save(function(err) {
+        if (err) return done(err);
+
+        db.Person.get({_id: person._id}, function (err, samePerson) {
+          if (err) return done(err);
+
+          samePerson.age.should.equal(100);
+          done();
+        });
+      });
     });
   });
 });
