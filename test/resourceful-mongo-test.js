@@ -156,6 +156,23 @@ describe("Finding", function(){
       });
     });
   });
+
+
+  it("and then saving", function(done) {
+    var p = db.people;
+    db.createPeople([p.bob, p.steve, p.joe], function() {
+
+      db.Person.find({name : "Bob"}, function(err, people){
+        if(err) done(err);
+
+        var bob = people[0];
+        bob.save(function(err) {
+          if (err) done(err);
+          done();
+        });
+      });
+    });
+  });
 });
 
 describe("Destroying", function() {
