@@ -64,7 +64,7 @@ describe("Creating", function() {
   it("creates a simple model", function(done) {
     
     db.Person.create({ name: 'Bob', age: 99 }, function (err, person) {
-      if (err) { done(err); }
+      if (err) return done(err);
 
       should.exist(person._id);
       person.age.should.equal(99);
@@ -79,7 +79,7 @@ describe("Saving", function() {
   it("correctly saves changes to a document", function(done) {
     
     db.Person.create({ name: 'Bob', age: 99 }, function (err, person) {
-      if (err) done(err);
+      if (err) return done(err);
 
       person.age++;
 
@@ -101,10 +101,10 @@ describe("Updating", function() {
 
   it("paritally updates model", function(done) {
     db.Person.create({ name: 'Bob', age: 99 }, function (err, person) {
-      if (err) done(err);
+      if (err) return done(err);
       
       person.update({name:"Steve"}, function(err, person){
-        if(err) return done(err);
+        if (err) return done(err);
 
         person.name.should.equal("Steve");
         person.age.should.equal(99);
@@ -121,7 +121,7 @@ describe("Finding", function(){
     db.createPeople([p["bob"], p["steve"]], function() {
 
       db.Person.all(function(err, people){
-        if(err) done(err);
+        if (err) return done(err);
 
         people.should.have.lengthOf(2)
         done();
@@ -133,7 +133,7 @@ describe("Finding", function(){
 
     db.Person.create(db.people.bob, function(err, bob) {
       db.Person.get(bob.id, function(err, foundBob) {
-        if(err) done(err);
+        if (err) return done(err);
 
         foundBob.name.should.equal(bob.name);
         foundBob.age.should.equal(bob.age);
@@ -149,7 +149,7 @@ describe("Finding", function(){
     db.createPeople([p.bob, p.steve, p.joe], function() {
 
       db.Person.find({name : "Bob"}, function(err, people){
-        if(err) done(err);
+        if (err) return done(err);
 
         people.should.have.lengthOf(1);
         done();
@@ -157,13 +157,12 @@ describe("Finding", function(){
     });
   });
 
-
   it("and then saving", function(done) {
     var p = db.people;
     db.createPeople([p.bob, p.steve, p.joe], function() {
 
       db.Person.find({name : "Bob"}, function(err, people){
-        if(err) done(err);
+        if (err) return done(err);
 
         var bob = people[0];
         bob.save(function(err) {
@@ -187,7 +186,7 @@ describe("Destroying", function() {
     db.Person.create(db.people.bob, function(err, bob) {
       db.Person.destroy(bob.id, function(err, result) {
 
-        if(err) done(err);
+        if (err) return done(err);
   
         result.should.equal(1);
         done();
@@ -197,7 +196,7 @@ describe("Destroying", function() {
   
   it("by name", function(done) {
     db.Person.destroy({name: "bob"}, function(err, result) {
-      if(err) done(err);
+      if (err) return done(err);
 
       result.should.equal(1);
       done();
