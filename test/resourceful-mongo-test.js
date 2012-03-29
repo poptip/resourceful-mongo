@@ -144,6 +144,26 @@ describe("Finding", function(){
     });
   });
 
+  it("by multiple ids", function(done) {
+
+    db.Person.create(db.people.bob, function(err, bob) {
+      db.Person.create(db.people.steve, function(err, steve) {
+
+        var IDs = [steve, bob].map(function(doc) {
+          return doc._id;
+        });
+
+        db.Person.find(IDs, function(err, people) {
+          if (err) return done(err);
+
+          people.should.have.lengthOf(2);
+          done();
+        });
+      });
+    });
+  });
+
+
   it("by name", function(done) {
     var p = db.people;
     db.createPeople([p.bob, p.steve, p.joe], function() {
