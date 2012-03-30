@@ -86,7 +86,7 @@ describe("Saving", function() {
       person.save(function(err) {
         if (err) return done(err);
 
-        db.Person.get({_id: person._id}, function (err, samePerson) {
+        db.Person.get(person._id, function (err, samePerson) {
           if (err) return done(err);
 
           samePerson.age.should.equal(100);
