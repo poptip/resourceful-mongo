@@ -95,6 +95,27 @@ describe("Saving", function() {
       });
     });
   });
+
+  it("correctly save a document twice", function(done) {
+    var n = 2, doneCalled = false;
+    function onDone(err) {
+      if (err && !doneCalled) {
+        doneCalled = true;
+        done(new Error(JSON.stringify(err)));
+        return;
+      }
+      if (--n === 0) done();
+    }
+
+    db.Person.create({ name: 'Bob', age: 99 }, function (err, person) {
+      if (err) return done(err);
+
+      person.age++;
+
+      person.save(onDone);
+      person.save(onDone);
+    });
+  });
 });
 
 describe("Updating", function() {
@@ -143,6 +164,17 @@ describe("Finding", function(){
       });
     });
   });
+
+  /*
+  it("by id that does not exist", function(done) {
+    db.Person.get('doesnotexist', function(err, person) {
+      if (err) return done(err);
+
+      should.not.exist(person);
+      done();
+    });
+  });
+  */
 
   it("by multiple ids", function(done) {
 
