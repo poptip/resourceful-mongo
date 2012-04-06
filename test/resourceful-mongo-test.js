@@ -112,7 +112,10 @@ describe("Saving", function() {
 
       person.age++;
 
+      (typeof person._id).should.equal('string');
       person.save(onDone);
+
+      (typeof person._id).should.equal('string');
       person.save(onDone);
     });
   });
