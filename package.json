@@ -10,7 +10,7 @@
   "keywords": ["mongodb", "database", "ODM"],
   "dependencies": {
     "mongodb": "0.9.9-2",
-    "resourceful": "git://github.com/flatiron/resourceful.git"
+    "resourceful": "https://github.com/fent/resourceful/tarball/master"
   },
   "devDependencies": {
     "mocha" : "0.8.x",
