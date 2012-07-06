@@ -3,10 +3,9 @@
 A MongoDB engine for [resourceful](https://github.com/flatiron/resourceful/), a datamapper part of the [flatiron](https://github.com/flatiron/) project.
 
 #### Credits
-
-Ryan Fitzgerald [@TheRyanFitz](http://twitter.com/#!/TheRyanFitz)
-Brenden Kokoszka [@bkokoszka](http://twitter.com/#!/bkokoszka)
-Roly Fentanes [@roly426](http://twitter.com/#!/roly426)
+* Ryan Fitzgerald [@TheRyanFitz](http://twitter.com/#!/TheRyanFitz)
+* Brenden Kokoszka [@bkokoszka](http://twitter.com/#!/bkokoszka)
+* Roly Fentanes [@roly426](http://twitter.com/#!/roly426)
 
 ## Example
 
