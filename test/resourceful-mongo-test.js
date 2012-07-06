@@ -168,7 +168,6 @@ describe("Finding", function(){
     });
   });
 
-  /*
   it("by id that does not exist", function(done) {
     db.Person.get('doesnotexist', function(err, person) {
       if (err) return done(err);
@@ -177,7 +176,6 @@ describe("Finding", function(){
       done();
     });
   });
-  */
 
   it("by multiple ids", function(done) {
 
@@ -240,6 +238,7 @@ describe("Destroying", function() {
 
     db.Person.create(db.people.bob, function(err, bob) {
       db.Person.destroy(bob.id, function(err, result) {
+
 
         if (err) return done(err);
   
