@@ -4,7 +4,9 @@ A MongoDB engine for [resourceful](https://github.com/flatiron/resourceful/), a 
 
 #### Credits
 
-Ryan Fitzgerald, Follow [@TheRyanFitz on Twitter](http://twitter.com/#!/TheRyanFitz).
+Ryan Fitzgerald [@TheRyanFitz](http://twitter.com/#!/TheRyanFitz)
+Brenden Kokoszka [@bkokoszka](http://twitter.com/#!/bkokoszka)
+Roly Fentanes [@roly426](http://twitter.com/#!/roly426)
 
 ## Example
 
