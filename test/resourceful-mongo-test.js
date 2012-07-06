@@ -172,7 +172,7 @@ describe("Finding", function(){
     db.Person.get('doesnotexist', function(err, person) {
       if (err) return done(err);
 
-      should.not.exist(person);
+      should.not.exist(person._id);
       done();
     });
   });
